@@ -1,3 +1,18 @@
 {% block body %}
+    <form action="/identify" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            <legend class="sr-only">Upload an image of your spider</legend>
+            <h2>Upload an image of your spider</h2>
 
+            <label for="image">
+                Upload spider image
+                <input type="image" id="image" name="image" class="sr-only" aria-described-by="label-file" />
+            </label>
+
+            <img id="uploaded-file" src="#" alt="The image you uploaded" />
+
+            <input type="submit" value="Submit" />
+
+        </fieldset>
+    </form>
 {% endblock %}
