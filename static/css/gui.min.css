@@ -6873,3 +6873,25 @@ table th[class*="col-"] {
     border-bottom-width: 2px;
   }
 }
+* {
+  box-sizing: border-box;
+}
+header {
+  background-color: #d5002b;
+  padding: 6px;
+}
+header h1 {
+  margin: 0;
+}
+.container {
+  background-color: #f4f3f0;
+  border-radius: 6px;
+  border: solid 1px #f9f9f8;
+  margin: auto;
+}
+.container .input-field {
+  margin: 6px 0;
+}
+footer {
+  text-align: center;
+}

@@ -1,19 +1,27 @@
 {% extends 'index.html' %}
 {% block body %}
-    <form action="/identify" method="POST" enctype="multipart/form-data">
-        <fieldset>
-            <legend class="sr-only">Upload an image of your spider</legend>
-            <h2>Upload an image of your spider</h2>
+    <div class="col-md-6 col-md-offset-3">
+        
+        <form action="/identify" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                <legend class="sr-only">Upload an image of your spider</legend>
+                <h2>Upload an image of your spider</h2>
 
-            <label for="image">
-                Upload spider image
-                <input type="image" id="image" name="image" class="sr-only" aria-described-by="label-file" />
-            </label>
+                <label for="image" class="input-field btn btn-primary btn-soft">
+                    Upload spider image
+                    <input type="file" 
+                           id="image" 
+                           name="image" 
+                           class="sr-only" 
+                           onchange="readUrl(this);" />
+                </label>
 
-            <img id="uploaded-file" src="#" alt="The image you uploaded" />
+                <img id="uploaded-file" src="#" alt="The image you uploaded" />
 
-            <input type="submit" value="Submit" />
+                <input type="submit" class="input-field btn btn-primary" value="Submit" />
 
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </div>
+
 {% endblock %}
