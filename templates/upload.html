@@ -7,18 +7,21 @@
                 <legend class="sr-only">Upload an image of your spider</legend>
                 <h2>Upload an image of your spider</h2>
 
-                <label for="image" class="input-field btn btn-primary btn-soft">
+                <label for="camera"></label>
+                <input type="file" id="camera" name="camera" />
+
+                <label for="upload" class="input-field btn btn-primary btn-soft">
                     Upload spider image
                     <input type="file" 
-                           id="image" 
-                           name="image" 
+                           id="upload" 
+                           name="upload" 
                            class="sr-only" 
                            onchange="readUrl(this);" />
                 </label>
 
                 <img id="uploaded-file" src="#" alt="The image you uploaded" />
 
-                <input type="submit" class="input-field btn btn-primary" value="Submit" />
+                <input type="submit" id="uploaded-submit" class="input-field btn btn-primary" value="Submit" />
 
             </fieldset>
         </form>

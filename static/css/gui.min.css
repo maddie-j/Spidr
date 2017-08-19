@@ -6879,16 +6879,22 @@ table th[class*="col-"] {
 * {
   box-sizing: border-box;
 }
+body {
+  height: 100%;
+}
 header {
   background-color: #567168;
   padding: 6px;
 }
 header h1 {
   margin: 0;
+  margin-left: 24px;
+  font-size: 2.5em;
   color: #e0efda;
 }
 .container {
   margin: auto;
+  height: 100%;
 }
 .container .input-field {
   margin: 6px 0;
@@ -6897,6 +6903,10 @@ header h1 {
 .container #uploaded-file {
   display: none;
 }
+.container #uploaded-submit {
+  display: none;
+}
 footer {
   text-align: center;
+  margin-top: 12px;
 }

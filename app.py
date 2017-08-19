@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import *
 import requests
 import base64
 import api_auth
@@ -13,10 +13,10 @@ def root():
 @app.route('/identify', methods=['POST'])
 def spider():
 
-    if 'image' not in request.files:
+    if 'upload' not in request.files:
         return redirect(request.url)
 
-    img = request.files['image'].read()
+    img = request.files['upload'].read()
 
 
     auth = (api_auth.USER, api_auth.PASS)
@@ -51,7 +51,14 @@ def spider():
 
 @app.route('/result')
 def dummy() :
-    return render_template("result.html")
+    info = {
+        'name': 'Scary', 
+        'danger': 'Will kill you within 24 hours. Call 000.  NOW!', 
+        'image': url_for("images", filename='Scary'),
+        'uploaded': request.files['image'].read()
+    }
+
+    return render_template("result.html", info=info)
 
 
 app.run(debug=True)
