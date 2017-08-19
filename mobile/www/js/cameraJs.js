@@ -30,6 +30,9 @@
         url: "http://10.1.1.108:5000/identify",
         data: {
           imageData: imageData
+        },
+        success: function(result) {
+          
         }
       });
 

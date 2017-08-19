@@ -6,6 +6,13 @@ import json
 
 app = Flask(__name__)
 
+descriptions = {
+    "huntsman": "This is a huntsman. Deal with it...",
+    "red back": "This is a red back. RUN!",
+    "funnel web": "idk about funnel webs",
+    "mouse spider": "wtf. Mouse is not a spider... I think"
+}
+
 @app.route('/')
 def root():
     return render_template('upload.html')
@@ -47,17 +54,21 @@ def spiderMob():
     print(scan_task.text)
     resp = scan_task.json()['task']
 
-    desc = resp['description']
+    name = resp['description']
     confidence = float(resp['confidence'])
 
-    if confidence < 0.60:
-        return json.dumps({
-            "name": "try_again"
-        })
+    data = {
+        "name": name,
+        "description": descriptions[name],
+        "spider_img": "TODO"
+    } 
 
-    return json.dumps({
-        "name": desc
-    })
+    if confidence < 0.60:
+        data = {
+            "error": True
+        }
+
+    return render_template("result.html", **data)
 
 @app.route('/result')
 def dummy() :
