@@ -1,13 +1,23 @@
-import wikipedia
+from pyquery import PyQuery as pq
+from lxml import etree
+import wikipedia as wiki
+import re
+import sys
 
 #input is spider name
-name = "huntsman spider"
+name = "mouse spider"
 
-#get the summary
-summary = wikipedia.summary(name)
+def get_image(name):
 
-#get the url
-url = wikipedia.page(name).url
+    page = wiki.page(name).html()
 
-print(wikipedia.summary(name))
-print(url)
+    d = pq(page)
+    table = d('table.infobox img')
+
+    if len(table) == 0:
+    	print('Unable to find the table element')
+
+    else:
+        print('https:' + table.attr['src'])
+
+get_image(name)
