@@ -1,2 +1,4 @@
 .DS_Store
 virtualenv/
+api_auth.py
+__pycache__/
