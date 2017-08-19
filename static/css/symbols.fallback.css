@@ -1,0 +1,36 @@
+.checkbox-input:disabled + .checkbox-text:after,
+.icon-checkbox-off-disabled { background-image: url('../img/icon-checkbox-off-disabled.png'); background-repeat: no-repeat; }
+
+.checkbox-input + .checkbox-text:after,
+.icon-checkbox-off { background-image: url('../img/icon-checkbox-off.png'); background-repeat: no-repeat; }
+
+.checkbox-input:disabled:checked + .checkbox-text:after,
+.icon-checkbox-on-disabled { background-image: url('../img/icon-checkbox-on-disabled.png'); background-repeat: no-repeat; }
+
+.checkbox-input:checked + .checkbox-text:after,
+.icon-checkbox-on { background-image: url('../img/icon-checkbox-on.png'); background-repeat: no-repeat; }
+
+.radio-input:disabled + .radio-text:after,
+.icon-radio-off-disabled { background-image: url('../img/icon-radio-off-disabled.png'); background-repeat: no-repeat; }
+
+.radio-input + .radio-text:after,
+.icon-radio-off { background-image: url('../img/icon-radio-off.png'); background-repeat: no-repeat; }
+
+.radio-input:disabled:checked + .radio-text:after,
+.icon-radio-on-disabled { background-image: url('../img/icon-radio-on-disabled.png'); background-repeat: no-repeat; }
+
+.radio-input:checked + .radio-text:after,
+.icon-radio-on { background-image: url('../img/icon-radio-on.png'); background-repeat: no-repeat; }
+
+.icon-house { background-image: url('../img/icon-house.png'); background-repeat: no-repeat; }
+
+.icon-people { background-image: url('../img/icon-people.png'); background-repeat: no-repeat; }
+
+.icon-person { background-image: url('../img/icon-person.png'); background-repeat: no-repeat; }
+
+.lists.lists-linklist > li:after,
+.icon-linklist { background-image: url('../img/icon-linklist.png'); background-repeat: no-repeat; }
+
+.lists.lists-tick > li:after,
+.icon-ticklist { background-image: url('../img/icon-ticklist.png'); background-repeat: no-repeat; }
+

@@ -1,0 +1,35 @@
+{
+	"icon-checkbox-off": [
+		".checkbox-input + .checkbox-text:after"
+	],
+	"icon-checkbox-off-disabled": [
+		".checkbox-input:disabled + .checkbox-text:after"
+	],
+	"icon-checkbox-on": [
+		".checkbox-input:checked + .checkbox-text:after"
+	],
+	"icon-checkbox-on-disabled": [
+		".checkbox-input:disabled:checked + .checkbox-text:after"
+	],
+	"icon-radio-off": [
+		".radio-input + .radio-text:after"
+	],
+	"icon-radio-off-disabled": [
+		".radio-input:disabled + .radio-text:after"
+	],
+	"icon-radio-on": [
+		".radio-input:checked + .radio-text:after"
+	],
+	"icon-radio-on-disabled": [
+		".radio-input:disabled:checked + .radio-text:after"
+	],
+	"symbol": [
+		"selector"
+	],
+	"icon-ticklist": [
+		".lists.lists-tick > li:after"
+	],
+	"icon-linklist": [
+		".lists.lists-linklist > li:after"
+	]
+}
