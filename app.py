@@ -18,36 +18,44 @@ def spider():
 
     img = request.files['image'].read()
 
+    json_header = {'Content-Type': 'application/json'}
 
     auth = (api_auth.USER, api_auth.PASS)
+    b64img = base64.b64encode(img).decode()
+
+    data = '{"service":"%s","image":"%s"}'%('tagging2',b64img)
+
     uploaded_task = requests.post(
         'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks',
-        data = {
-            'service': 'tagging1',
-            'image': base64.b64encode(img)
-        },
-        auth = auth
+        data = data,
+        auth = auth,
+        headers = json_header
     )
+
+    print("UPLOADED")
 
     resp = uploaded_task.json()
 
-    print("IMAGE ID:{}".format(resp['id']))
 
+    id = resp['task']['uri'].split('/')[-1]
+
+    #print("IMAGE ID:{}".format(resp['id']))
     scan_task = requests.put(
-        'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks/run/{}'.format(resp['id']),
-        data = {
-            "scanned": True
-        },
-        auth = auth
+        'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks/run/{}'.format(id),
+        data = '{"scanned": true}',
+        auth = auth,
+        headers = json_header
     )
 
-    resp = scan_task.json()
+    print("SCANNED")
 
-    desc = resp['description'].split(',')
+    resp = scan_task.json()['task']
+
+    desc = resp['description']
     print(resp)
-    confidence = [int(a) for a in resp['confidence'].split(',')]
+    confidence = resp['confidence']
 
     return 'description: {}, confidence: {}'.format(desc, confidence)
 
 
-app.run(debug=True)
+app.run(debug=True, threaded=True)
