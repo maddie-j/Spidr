@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def root():
-    print("HELLO")
     return render_template('upload.html')
 
 @app.route('/identify', methods=['POST'])
@@ -32,14 +31,11 @@ def spider():
         headers = json_header
     )
 
-    print("UPLOADED")
-
     resp = uploaded_task.json()
-
+    print(resp)
 
     id = resp['task']['uri'].split('/')[-1]
 
-    #print("IMAGE ID:{}".format(resp['id']))
     scan_task = requests.put(
         'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks/run/{}'.format(id),
         data = '{"scanned": true}',
@@ -47,12 +43,10 @@ def spider():
         headers = json_header
     )
 
-    print("SCANNED")
-
     resp = scan_task.json()['task']
+    print(resp)
 
     desc = resp['description']
-    print(resp)
     confidence = resp['confidence']
 
     return 'description: {}, confidence: {}'.format(desc, confidence)
