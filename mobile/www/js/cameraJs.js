@@ -27,7 +27,7 @@
 
       $.ajax({
         type:'POST',
-        url: "http://10.1.1.108:5000/identifyMob",
+        url: "http://10.1.1.108:5000/identify",
         data: {
           imageData: imageData
         }
@@ -54,7 +54,7 @@
 
       $.ajax({
         type:'POST',
-        url: "http://10.1.1.108:5000/identifyMob",
+        url: "http://10.1.1.108:5000/identify",
         data: {
           imageData: imageData
         }
