@@ -6,8 +6,9 @@ function readUrl(input) {
         reader.onload = function (e) {
             $('#uploaded-file')
                 .attr('src', e.target.result);
-            $('#uploaded-file').attr('style', "display:block;")
-                .width("100%");
+            $('#uploaded-file').attr('style', "display:block;width:100%;");
+            $('#uploaded-submit').attr('style', "display:block;width:100%;");
+                
         };
 
         reader.readAsDataURL(input.files[0]);

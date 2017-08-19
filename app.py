@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template
+from flask import *
 import requests
 import base64
 import api_auth
@@ -13,45 +13,60 @@ def root():
 @app.route('/identify', methods=['POST'])
 def spider():
 
-    if 'image' not in request.files:
+    if 'upload' not in request.files:
         return redirect(request.url)
 
-    img = request.files['image'].read()
+    img = request.files['upload'].read()
 
+    json_header = {'Content-Type': 'application/json'}
 
     auth = (api_auth.USER, api_auth.PASS)
+    b64img = base64.b64encode(img).decode()
+
+    data = '{"service":"%s","image":"%s"}'%('tagging2',b64img)
+
     uploaded_task = requests.post(
         'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks',
-        data = {
-            'service': 'tagging1',
-            'image': base64.b64encode(img)
-        },
-        auth = auth
+        data = data,
+        auth = auth,
+        headers = json_header
     )
+
+    print("UPLOADED")
 
     resp = uploaded_task.json()
 
-    print("IMAGE ID:{}".format(resp['id']))
 
+    id = resp['task']['uri'].split('/')[-1]
+
+    #print("IMAGE ID:{}".format(resp['id']))
     scan_task = requests.put(
-        'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks/run/{}'.format(resp['id']),
-        data = {
-            "scanned": True
-        },
-        auth = auth
+        'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks/run/{}'.format(id),
+        data = '{"scanned": true}',
+        auth = auth,
+        headers = json_header
     )
 
-    resp = scan_task.json()
+    print("SCANNED")
 
-    desc = resp['description'].split(',')
+    resp = scan_task.json()['task']
+
+    desc = resp['description']
     print(resp)
-    confidence = [int(a) for a in resp['confidence'].split(',')]
+    confidence = resp['confidence']
 
     return 'description: {}, confidence: {}'.format(desc, confidence)
 
 @app.route('/result')
 def dummy() :
-    return render_template("result.html")
+    info = {
+        'name': 'Scary', 
+        'danger': 'Will kill you within 24 hours. Call 000.  NOW!', 
+        'image': url_for("images", filename='Scary'),
+        'uploaded': request.files['image'].read()
+    }
+
+    return render_template("result.html", info=info)
 
 
-app.run(debug=True)
+app.run(debug=True, threaded=True)
