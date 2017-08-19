@@ -5,7 +5,8 @@ function readUrl(input) {
 
         reader.onload = function (e) {
             $('#uploaded-file')
-                .attr('src', e.target.result)
+                .attr('src', e.target.result);
+            $('#uploaded-file').attr('style', "display:block;")
                 .width("100%");
         };
 

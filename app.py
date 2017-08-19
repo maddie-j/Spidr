@@ -57,5 +57,9 @@ def spider():
 
     return 'description: {}, confidence: {}'.format(desc, confidence)
 
+@app.route('/result')
+def dummy() :
+    return render_template("result.html")
+
 
 app.run(debug=True, threaded=True)

@@ -8,19 +8,20 @@ header {
 
     h1 {
         margin: 0;
+        color: @color-D;
     }
 }
 
 .container {
-    background-color: @color-Background;
-
-    border-radius: 6px;
-    border: solid 1px @color-Light;
-
     margin: auto;
 
     .input-field {
         margin: 6px 0;
+        cursor: pointer;
+    }
+
+    #uploaded-file {
+        display: none; // Will be turned on by JS once there's something to display
     }
 
 }
