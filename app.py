@@ -52,9 +52,8 @@ def spider():
 
     return 'description: {}, confidence: {}'.format(desc, confidence)
 
-@app.route('/identifyMob', methods=['POST'])
+@app.route('/identify', methods=['POST'])
 def spiderMob():
-
     if 'upload' in request.files:
         b64img = base64.b64encode(request.files['upload'].read()).decode()
     elif 'imageData' in request.form:
