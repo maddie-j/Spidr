@@ -20,4 +20,5 @@ function pulse(input) {
     input.innerHTML = "<span class='iconbox-item icon icon-size-md icon-loading'></span>"
     input.submit();
     input.disabled = true;
+    return true;
 }

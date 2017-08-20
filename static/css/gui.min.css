@@ -6898,12 +6898,12 @@ header h1 {
   font-size: 2.5em;
   color: #e0efda;
 }
-header h2 {
-  text-transform: capitalise;
-}
 .container {
   margin: auto;
   height: 100%;
+}
+.container h2 {
+  text-transform: capitalize;
 }
 .container .input-field {
   margin: 6px 0;
