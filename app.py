@@ -33,6 +33,7 @@ def spiderMob():
 
         data = '{"service":"%s","image":"%s"}'%('spiders',b64img)
 
+        # Removing to test
         uploaded_task = requests.post(
             'http://smartvision.aiam-dh.com:8080/api/v1.0/tasks',
             data = data,
@@ -58,11 +59,11 @@ def spiderMob():
         name = resp['description']
         confidence = float(resp['confidence'])
         print(name, confidence)
-
+        
         ## Get information about the spider
         data = {}
 
-        filename = os.path.join(app.static_folder, 'responses/{}.json'.format(resp['description'].replace(' ', '_')))
+        filename = os.path.join(app.static_folder, 'responses/{}.json'.format(name.replace(' ', '_')))
         with open(filename) as blog_file:
             data = json.load(blog_file)
 
