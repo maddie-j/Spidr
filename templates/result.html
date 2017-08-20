@@ -1,10 +1,11 @@
 {% extends 'index.html' %}
 {% block body %}
+    <div class="col-md-6 col-md-offset-3">
     {% if error %}
         <h2>Bad image</h2>
         <p> Please try to take a better image. But don't get too close...</p>
     {% else %}
-        <img src="{{url_for('static', filename='img/{}.jpg'.format(data.name.replace(' ', '_')) )}}" />
+        <img src="{{url_for('static', filename='img/{}.jpg'.format(data.name.replace(' ', '_')) )}}" width="100%" style="margin-top:18px;"/>
         <h2>{{data.name}}</h2>
         <dl>
             <dt>Confidence</dt>
@@ -23,6 +24,7 @@
             <dd>{{data.bitten}}</dd>
         </dl>
     {% endif %}
+    <a href="/" class="btn btn-primary input-field" >Scan again</a>
+    </div>
 
-    <a href="/" class="btn btn-primary">Scan again</a>
 {% endblock %}
