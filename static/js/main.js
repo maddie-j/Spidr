@@ -8,7 +8,7 @@ function readUrl(input) {
                 .attr('src', e.target.result);
             $('#uploaded-file').attr('style', "display:block;width:100%;");
             $('#uploaded-submit').attr('style', "display:block;width:100%;");
-                
+
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -16,6 +16,8 @@ function readUrl(input) {
 }
 
 function pulse(input) {
+    // input.preventDefault();
     input.innerHTML = "<span class='iconbox-item icon icon-size-md icon-loading'></span>"
+    input.submit();
     input.disabled = true;
 }

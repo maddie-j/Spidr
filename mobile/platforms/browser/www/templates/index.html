@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <link href="style.css" rel="stylesheet" />
+
+      <script src = "js/cameraJs.js"></script>
+        <script src = "js/jquery/jquery-3.2.1.min.js"></script>
+      <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+      <script type="text/javascript" charset="utf-8"></script>
+
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Blank App</title>
+    </head>
+    <body>
+        <button  class = "btn cameraButton" onclick ="capturePhoto();" >Camera</button> <br>
+        <button  class = "btn galleryButton" onclick="getPhoto(pictureSource.PHOTOLIBRARY);">Library</button><br>
+        <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+        <img style="display:none;width:60px;height:60px;" id="largeImage" src="" />
+        <canvas id="canv" style="display: none;"/>
+    </body>
+</html>
