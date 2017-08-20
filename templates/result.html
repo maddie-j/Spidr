@@ -4,13 +4,24 @@
         <h2>Bad image</h2>
         <p> Please try to take a better image. But don't get too close...</p>
     {% else %}
-        <img src={{spider_img}} />
+        <img src="{{url_for('static', filename='img/{}.jpg'.format(data.name.replace(' ', '_')) )}}" />
         <h2>{{data.name}}</h2>
-        <p>Confidence: {{conf}} </p>
-        <p>Scientific name: {{data.scientific}}</p>
-        <p>{{desc}}</p>
-        <p>Venom: {{data.venom}}</p>
-        <p>If bitten: {{data.bitten}} </p>
+        <dl>
+            <dt>Confidence</dt>
+            <dd>{{conf}}</dd>
+
+            <dt>Scientific name</dt>
+            <dd>{{data.scientific}}</dd>
+            
+            <dt>Description of Spider</dt>
+            <dd>{{data.desc}}</dd>
+            
+            <dt>Venom</dt>
+            <dd>{{data.venom}}</dd>
+
+            <dt>If bitten</dt>
+            <dd>{{data.bitten}}</dd>
+        </dl>
     {% endif %}
 
     <a href="/" class="btn btn-primary">Scan again</a>

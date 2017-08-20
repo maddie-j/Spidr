@@ -21,6 +21,7 @@ def root():
 @app.route('/identify', methods=['POST', 'GET'])
 def spiderMob():
     if request.method == 'POST':
+
         if 'upload' in request.files:
             b64img = base64.b64encode(request.files['upload'].read()).decode()
             print(b64img)
