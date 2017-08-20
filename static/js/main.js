@@ -17,4 +17,5 @@ function readUrl(input) {
 
 function pulse(input) {
     input.innerHTML = "<span class='iconbox-item icon icon-size-md icon-loading'></span>"
+    input.disabled = true;
 }

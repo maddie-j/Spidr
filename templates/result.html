@@ -1,13 +1,13 @@
 {% extends 'index.html' %}
 {% block body %}
     {% if error %}
-        <h1>Bad image</h1>
+        <h2>Bad image</h2>
         <p> Please try to take a better image. But don't get too close...</p>
     {% else %}
         <img src={{spider_img}} />
-        <h1>{{data.name}}</h1>
+        <h2>{{data.name}}</h2>
         <p>Confidence: {{conf}} </p>
-        <p>Family: {{data.family}}</p>
+        <p>Scientific name: {{data.scientific}}</p>
         <p>{{desc}}</p>
         <p>Venom: {{data.venom}}</p>
         <p>If bitten: {{data.bitten}} </p>
