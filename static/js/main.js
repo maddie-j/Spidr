@@ -14,3 +14,7 @@ function readUrl(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+function pulse(input) {
+    input.innerHTML = "<span class='iconbox-item icon icon-size-md icon-loading'></span>"
+}

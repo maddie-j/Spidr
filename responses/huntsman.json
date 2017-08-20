@@ -1,0 +1,7 @@
+{
+    "name": "huntsman",
+    "family": "Sparassidae",
+    "desc": "A very large, very fast spider found throughout Australia. Usually a brown-ish colour, this thing can be as large as your hand.",
+    "venom": "Non-toxic to humans, but there may be localised pain and swelling if bitten.",
+    "bitten": "Symptoms should go away within a couple of days on their own."
+}
