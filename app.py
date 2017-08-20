@@ -1,4 +1,5 @@
 from flask import *
+from posixpath import os
 import requests
 import base64
 import api_auth
@@ -13,7 +14,7 @@ app = Flask(__name__)
 #     "mouse spider": "wtf. Mouse is not a spider... I think"
 # }
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def root():
     return render_template('upload.html')
 
@@ -51,7 +52,7 @@ def spiderMob():
             headers = json_header
         )
 
-        print(scan_task.text)
+        # print(scan_task.text)
         resp = scan_task.json()['task']
 
         name = resp['description']
@@ -59,8 +60,11 @@ def spiderMob():
         print(name, confidence)
 
         ## Get information about the spider
-        data = requests.get(url_for("/responses", filename="huntsman.json".format(resp['description'])))
+        data = {}
 
+        filename = os.path.join(app.static_folder, 'responses/{}.json'.format(resp['description'].replace(' ', '_')))
+        with open(filename) as blog_file:
+            data = json.load(blog_file)
 
         if confidence < 0.60:
             data = {
